@@ -1,0 +1,12 @@
+Hi Folks,
+
+This is Enterprise API implemented in Perl.
+I needed API to work with device atlas json in perl, but unfortunatly there is none.
+I wrote my own using PHP example.
+
+http://deviceatlas.com/resourcecentre/Get+Started/Enterprise+API
+
+it's not full, not all methodes are supported, but it will give you all attributes based on user-agent
+
+Maksym Naboka 2012
+
