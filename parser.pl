@@ -16,7 +16,6 @@ our $debug = 0;
 sub new() {
 	my $class = shift;
 	my $self = {
-		#input => '20111122.json',
 		input => '',
 	};
 
@@ -40,7 +39,6 @@ sub getTreeFromString() {
 	undef $i;
 	$tree->{pr} = \%pr;
 	$tree->{pn} = \%pn;
-	#$tree->{r} = [] if($tree->{r});
 
 	return $tree;
 
@@ -175,20 +173,7 @@ sub getProperties() {
 sub valueAsTypedFromId() {
 		my($self,$tree, $id, $propertyId) = @_;
                 my $obj = $tree->{v}->[$id];
-                #switch ($tree['p'][$propertyId]{0}) {
-                #        case 's':
-                #                settype($obj, "string");
-                #                break;
-                #        case 'b':
-                #                settype($obj, "boolean");
-                #                break;
-                #        case 'i':
-                #                settype($obj, "integer");
-                #                break;
-                #        case 'd':
-                #                settype($obj, "string");
-                #                break;
-                #}
+
                 return $obj;
         }
 
@@ -211,9 +196,6 @@ my $show_all=0;
 my $t = Mobi_Mtld_DA_Api->new();
 $t->{input} = shift || &usage;
 my $tree = $t->getTreeFromString;
-#print &Dumper($t->listProperties($tree));
-#print $t->getProperty($tree,$useragent, $attr) if($useragent && $attr);
-#$out = $t->getProperties($tree,"$_");
 
 open (F, shift ) or &usage;
 
