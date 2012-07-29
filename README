@@ -1,12 +1,20 @@
-Hi Folks,
+DeviceAtlas Enterprise API in Perl
+=================
 
-This is Enterprise API implemented in Perl.
-I needed API to work with device atlas json in perl, but unfortunatly there is none.
-I wrote my own using PHP example.
+Thank you very much to the initial work done by [darkonie](https://github.com/darkonie/Device-atlas-API-in-Perl "Maksym Naboka") for building a good starting point.
 
-http://deviceatlas.com/resourcecentre/Get+Started/Enterprise+API
+This work was done for [Oversee.net](http://www.oversee.net/ "Oversee.net") with use of the [DeviceAtlas Enterprise Liscense](http://deviceatlas.com/resourcecentre/Get+Started/Enterprise+API).
 
-it's not full, not all methodes are supported, but it will give you all attributes based on user-agent
+To test the API, run 
+```
+test.pl
+```
+ as follows:
 
-Maksym Naboka 2012
+```
+./test.pl -j <path to DA JSON file> -l <User Agent log file>
+```
 
+The 'User Agent log file' should be a new line delimited file containing a sinlge UA per line.
+
+Cheers!
