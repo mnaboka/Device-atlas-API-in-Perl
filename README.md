@@ -1,4 +1,4 @@
-DeviceAtlas Enterprise API for Perl
+DeviceAtlas::API - DeviceAtlas Enterprise API for Perl
 =================
 
 Thank you very much to the initial work done by [darkonie](https://github.com/darkonie/Device-atlas-API-in-Perl "Maksym Naboka") for building a good starting point.
