@@ -4,8 +4,9 @@ use warnings;
 package DeviceAtlas::API;
 
 use JSON;
+use Data::Dumper;
 
-my $VERSION = '1.1';
+my $VERSION = '2.0';
 
 my $jcoder = JSON::XS->new->allow_nonref;
 
@@ -106,10 +107,8 @@ sub valueFromId {
    return $self->tree->{v}->[$id] if $id;
 }
 
-# TODO: refactor
 sub seekProperties {
    my ($self, $node, $string, $properties, $sought, $matched, $rules) = @_;
-   my ($seek);
    my $unmatched = $string;
 
    if ($node->{d}) {
@@ -132,8 +131,16 @@ sub seekProperties {
    }
 
    if ($node->{'c'}) {
-      for (my $c = 1; $c < length($string) + 1; $c++) {
-			$seek = substr($string, 0, $c);
+		# Rules - strip out info based on rules
+		if ($node->{r}) {
+			foreach my $r (@{$node->{r}}) {
+				my $rule = $$rules->[$r];
+				$string =~ s/$rule//g;
+			}
+		}
+
+		for (my $c = 1; $c < length($string) + 1; $c++) {
+			my $seek = substr($string, 0, $c);
 			if ($node->{'c'}->{$seek}) {
 				$$matched .= $seek;
 				$self->seekProperties($node->{'c'}->{$seek}, substr($string, $c), $properties, $sought, $matched, $rules);
@@ -151,10 +158,10 @@ sub getProperties {
    my @idProperties = ();
    my $matched = "";
    my @sought = ();
-   #my $rules = $self->tree->{r}->[1];
-   my $rules = "";
+   my $rules = $self->tree->{r}->{1} || '';
 
    $userAgent = $self->trim($userAgent);
+	print "UAS: ".$userAgent."\n";
    $self->seekProperties($self->tree->{t}, $userAgent, \@idProperties, \@sought, \$matched, \$rules);
 
    my %properties = ();
