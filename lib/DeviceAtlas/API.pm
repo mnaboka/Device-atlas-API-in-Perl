@@ -161,8 +161,7 @@ sub getProperties {
    my $rules = $self->tree->{r}->{1} || '';
 
    $userAgent = $self->trim($userAgent);
-	print "UAS: ".$userAgent."\n";
-   $self->seekProperties($self->tree->{t}, $userAgent, \@idProperties, \@sought, \$matched, \$rules);
+	$self->seekProperties($self->tree->{t}, $userAgent, \@idProperties, \@sought, \$matched, \$rules);
 
    my %properties = ();
    my $id = 0;
