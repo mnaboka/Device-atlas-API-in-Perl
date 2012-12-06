@@ -1,0 +1,6 @@
+Build.PL
+lib/DeviceAtlas/API.pm
+MANIFEST			This list of files
+README.md
+t/01da_function.t
+t/data/donotadd.json
